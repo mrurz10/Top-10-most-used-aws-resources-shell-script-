@@ -1,0 +1,66 @@
+#!/bin/bash
+
+################################################
+######   aws report project     #######################
+#
+#
+# Version : v1
+#  This script will report the aws resources usage
+#############################
+
+#debug mode
+
+set -x
+
+
+#AWS S3
+#AWS EC2
+#AWS Lambda
+#AWS IAM users
+#AWS RDS
+#AWS ELASTICBEANSTALK
+#AWS Dynamodb
+#AWS Autoscaling
+#AWS ecs
+#Aws sqs
+
+#list s3 buckets
+
+echo " print list of s3 bucket"
+aws s3 ls
+
+#list ec2 instances
+echo "print list of ec2 instances"
+aws ec2 describe-instances | jq '.Reservations[].Instances[].InstanceId'
+
+#list lambda
+echo "print list of lambda functions"
+aws lambda list-functions
+
+# list IAM users
+echo "print list of IAM users"
+aws iam list-users
+
+#list db instances
+echo "print list of  rds instances"
+aws rds describe-db-instances
+
+#list ebs 
+echo "print list of applications in ebs"
+aws  elasticbeanstalk describe-applications
+
+#list dynamodb tables
+echo "print list of tables in dynamodb"
+aws dynamodb list-tables
+
+#list autoscaling instances
+echo "print list of autoscaling intances"
+aws autoscaling describe-auto-scaling-instances
+
+#list  ecs clusters
+echo "print list ecs clusters"
+aws   ecs list-clusters
+
+#list queues
+echo "print list of queues"
+aws sqs list-queues                                                                                                                                                                                                                                                                                                                                       
